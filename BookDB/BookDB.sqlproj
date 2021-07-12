@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>BookDB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{e115ba1a-c4f7-4d1c-a555-b0a5e34c2f75}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>BookDB</RootNamespace>
+    <AssemblyName>BookDB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\Book.sql" />
+    <Build Include="dbo\Tables\SubCategory.sql" />
+    <Build Include="dbo\Tables\Category.sql" />
+    <Build Include="dbo\Stored Procedures\CreateBook.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateBook.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteBook.sql" />
+    <Build Include="dbo\Stored Procedures\GetBooksBySearchValue.sql" />
+    <Build Include="dbo\Stored Procedures\GetBookByBookId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllBooks.sql" />
+    <Build Include="dbo\Stored Procedures\CreateCategory.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateCategory.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteCategory.sql" />
+    <Build Include="dbo\Stored Procedures\GetCategoriesBySearchValue.sql" />
+    <Build Include="dbo\Stored Procedures\GetCategoryByCategoryId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCategories.sql" />
+    <Build Include="dbo\Stored Procedures\CreateSubCategory.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateSubCategory.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteSubCategory.sql" />
+    <Build Include="dbo\Stored Procedures\GetSubCategoriesBySeachValue.sql" />
+    <Build Include="dbo\Stored Procedures\GetSubCategoryBySubCategoryId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllSubCategories.sql" />
+    <Build Include="dbo\Stored Procedures\CreateUser.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateUser.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteUser.sql" />
+    <Build Include="dbo\Stored Procedures\GetUsersBySearchValue.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllUsers.sql" />
+  </ItemGroup>
+</Project>
