@@ -22,7 +22,7 @@ Begin
 	set nocount on;
 
 	Insert Into dbo.[User](FirstName, LastName, Email, Phone, Address1, Address2, City, [State], ZipCode, IsActive, CreatedUser, 
-					UpdatedUser, CreatedDate, UpdatedDate, UserId)
+					UpdatedUser, CreatedDate, UpdatedDate)
 	Values(@FirstName,	@LastName, @Email, @Phone, @Address1, @Address2, @City, @State, @ZipCode, @IsActive, @CreatedUser, 
 	@UpdatedUser, @CreatedDate, @UpdatedDate)
 
