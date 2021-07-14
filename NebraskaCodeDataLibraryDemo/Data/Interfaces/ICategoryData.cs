@@ -9,11 +9,11 @@ namespace NebraskaCodeDataLibraryDemo.Data.Interfaces
 {
 	public interface ICategoryData
 	{
-		Task<int> CreateCategory(Category category);
-		Task<int> UpdateCategory(Category category);
+		Task<int> CreateCategory(CategoryModel category);
+		Task<int> UpdateCategory(CategoryModel category);
 		Task<int> DeleteCategory(int categoryId);
-		Task<List<Category>> GetCategoriesBySearchValue(string searchValue);
-		Task<Category> GetCategoryByCategoryId(int categoryId);
-		Task<List<Category>> GetAllCategories();
+		Task<IEnumerable<CategoryModel>> GetCategoriesBySearchValue(string searchValue);
+		Task<IEnumerable<CategoryModel>> GetCategoryByCategoryId(int categoryId);
+		Task<IEnumerable<CategoryModel>> GetAllCategories();
 	}
 }

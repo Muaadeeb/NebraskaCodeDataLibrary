@@ -23,7 +23,7 @@ namespace NebraskaCodeDataLibraryDemo.Data
 			_connectionStringData = connectionStringData;
 		}
 
-		public async Task<int> CreateCategory(Category category)
+		public async Task<int> CreateCategory(CategoryModel category)
 		{
 			DynamicParameters p = new DynamicParameters();
 
@@ -39,7 +39,7 @@ namespace NebraskaCodeDataLibraryDemo.Data
 			return p.Get<int>("categoryId");
 		}
 
-		public async Task<int> UpdateCategory(Category category)
+		public async Task<int> UpdateCategory(CategoryModel category)
 		{
 			return await _dataAccess.SaveData("dbo.UpdateCategory",
 				new
@@ -61,31 +61,31 @@ namespace NebraskaCodeDataLibraryDemo.Data
 				_connectionStringData.SqlConnectionName);
 		}
 
-		public async Task<List<Category>> GetCategoriesBySearchValue(string searchValue)
+		public async Task<IEnumerable<CategoryModel>> GetCategoriesBySearchValue(string searchValue)
 		{
-			var result = await _dataAccess.LoadData<Category, dynamic>("dbo.GetCategoriesBySearchValue",
+			var result = await _dataAccess.LoadData<CategoryModel, dynamic>("dbo.GetCategoriesBySearchValue",
 				new {SearchValue = searchValue},
 				_connectionStringData.SqlConnectionName);
 
-			return result.ToList();
+			return result;
 		}
 
-		public async Task<Category> GetCategoryByCategoryId(int categoryId)
+		public async Task<IEnumerable<CategoryModel>> GetCategoryByCategoryId(int categoryId)
 		{
-			var result = await _dataAccess.LoadData<Category, dynamic>("dbo.GetCategoryByCategoryId",
+			var result = await _dataAccess.LoadData<CategoryModel, dynamic>("dbo.GetCategoryByCategoryId",
 				new { CategoryId = categoryId },
 				_connectionStringData.SqlConnectionName);
 
-			return result.FirstOrDefault();
+			return result;
 		}
 
-		public async Task<List<Category>> GetAllCategories()
+		public async Task<IEnumerable<CategoryModel>> GetAllCategories()
 		{
-			var result = await _dataAccess.LoadData<Category, dynamic>("dbo.GetAllCategories",
+			var result = await _dataAccess.LoadData<CategoryModel, dynamic>("dbo.GetAllCategories",
 				new {  },
 				_connectionStringData.SqlConnectionName);
 
-			return result.ToList();
+			return result;
 		}
 	}
 }

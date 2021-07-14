@@ -8,7 +8,7 @@ using Dapper;
 using NebraskaCodeDataLibraryDemo.Data.Interfaces;
 using NebraskaCodeDataLibraryDemo.Db;
 using NebraskaCodeDataLibraryDemo.Db.Interfaces;
-using SubCategory = NebraskaCodeDataLibraryDemo.Db.Models.SubCategory;
+using SubCategoryModel = NebraskaCodeDataLibraryDemo.Db.Models.SubCategoryModel;
 
 namespace NebraskaCodeDataLibraryDemo.Data
 {
@@ -23,7 +23,7 @@ namespace NebraskaCodeDataLibraryDemo.Data
 			_connectionStringData = connectionStringData;
 		}
 
-		public async Task<int> CreateSubCategory(SubCategory subCategory)
+		public async Task<int> CreateSubCategory(SubCategoryModel subCategory)
 		{
 			DynamicParameters p = new DynamicParameters();
 
@@ -40,7 +40,7 @@ namespace NebraskaCodeDataLibraryDemo.Data
 			return p.Get<int>("SubCategoryId");
 		}
 
-		public async Task<int> UpdateSubCategory(SubCategory subCategory)
+		public async Task<int> UpdateSubCategory(SubCategoryModel subCategory)
 		{
 			return await _dataAccess.SaveData("dbo.UpdateSubCategory",
 				new
@@ -63,31 +63,31 @@ namespace NebraskaCodeDataLibraryDemo.Data
 				_connectionStringData.SqlConnectionName);
 		}
 
-		public async Task<List<SubCategory>> GetSubCategoriesBySearchValue(string searchValue)
+		public async Task<IEnumerable<SubCategoryModel>> GetSubCategoriesBySearchValue(string searchValue)
 		{
-			var result = await _dataAccess.LoadData<SubCategory, dynamic>("dbo.GetSubCategoriesBySearchValue",
+			var result = await _dataAccess.LoadData<SubCategoryModel, dynamic>("dbo.GetSubCategoriesBySearchValue",
 				new {SearchValue = searchValue},
 				_connectionStringData.SqlConnectionName);
 
-			return result.ToList();
+			return result;
 		}
 
-		public async Task<SubCategory> GetSubCategoryBySubCategoryId(int subCategoryId)
+		public async Task<IEnumerable<SubCategoryModel>> GetSubCategoryBySubCategoryId(int subCategoryId)
 		{
-			var result = await _dataAccess.LoadData<SubCategory, dynamic>("dbo.GetSubCategoryBySubCategoryId",
+			var result = await _dataAccess.LoadData<SubCategoryModel, dynamic>("dbo.GetSubCategoryBySubCategoryId",
 				new { SubCategoryId = subCategoryId },
 				_connectionStringData.SqlConnectionName);
 
-			return result.FirstOrDefault();
+			return result;
 		}
 
-		public async Task<List<SubCategory>> GetAllSubCategories()
+		public async Task<IEnumerable<SubCategoryModel>> GetAllSubCategories()
 		{
-			var result = await _dataAccess.LoadData<SubCategory, dynamic>("dbo.GetAllSubCategories",
+			var result = await _dataAccess.LoadData<SubCategoryModel, dynamic>("dbo.GetAllSubCategories",
 				new {  },
 				_connectionStringData.SqlConnectionName);
 
-			return result.ToList();
+			return result;
 		}
 	}
 }

@@ -9,11 +9,11 @@ namespace NebraskaCodeDataLibraryDemo.Data.Interfaces
 {
 	public interface IBookData
 	{
-		Task<int> CreateBookAsync(Book book);
-		Task<int> UpdateBookAsync(Book book);
+		Task<int> CreateBookAsync(BookModel book);
+		Task<int> UpdateBookAsync(BookModel book);
 		Task<int> DeleteBookAsync(int bookId);
-		Task<List<Book>> GetBooksBySearchValueAsync(string searchValue);
-		Task<Book> GetBookByBookIdAsync(int bookId);
-		Task<List<Book>> GetAllBooksAsync();
+		Task<IEnumerable<BookModel>> GetBooksBySearchValueAsync(string searchValue);
+		Task<IEnumerable<BookModel>> GetBookByBookIdAsync(int bookId);
+		Task<IEnumerable<BookModel>> GetAllBooksAsync();
 	}
 }

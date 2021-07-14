@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NebraskaCodeDataLibraryDemo.Db.Models
 {
-	public class SubCategory
+	public class SubCategoryModel
 	{
 		public int SubCategoryId { get; set; }
 		public string SubCategoryName { get; set; }

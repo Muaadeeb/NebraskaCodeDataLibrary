@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NebraskaCodeDataLibraryDemo.Db.Models
 {
-	public class Category
+	public class CategoryModel
 	{
 		public int CategoryId { get; set; }
 		public string  CategoryName { get; set; }

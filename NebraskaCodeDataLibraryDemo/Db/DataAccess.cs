@@ -20,7 +20,7 @@ namespace NebraskaCodeDataLibraryDemo.Db
 			_configuration = configuration;
 		}
 
-		public async Task<List<T>> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName)
+		public async Task<IEnumerable<T>> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName)
 		{
 			string connectionString = _configuration.GetConnectionString(connectionStringName);
 
@@ -29,9 +29,10 @@ namespace NebraskaCodeDataLibraryDemo.Db
 				var rows = await connection.QueryAsync<T>(storedProcedure, parameters,
 					commandType: CommandType.StoredProcedure);
 
-				return rows.ToList();
+				return rows;
 			}
 		}
+
 
 		public async Task<int> SaveData<T>(string storedProcedure, T parameters, string connectionStringName)
 		{

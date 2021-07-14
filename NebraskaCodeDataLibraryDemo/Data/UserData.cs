@@ -23,7 +23,7 @@ namespace NebraskaCodeDataLibraryDemo.Data
 			_connectionStringData = connectionStringData;
 		}
 
-		public async Task<int> CreateUser(User user)
+		public async Task<int> CreateUser(UserModel user)
 		{
 			DynamicParameters p = new DynamicParameters();
 
@@ -49,7 +49,7 @@ namespace NebraskaCodeDataLibraryDemo.Data
 			return p.Get<int>("UserId");
 		}
 
-		public async Task<int> UpdateUser(User user)
+		public async Task<int> UpdateUser(UserModel user)
 		{
 			return await _dataAccess.SaveData("dbo.UpdateUser",
 				new
@@ -80,31 +80,31 @@ namespace NebraskaCodeDataLibraryDemo.Data
 				_connectionStringData.SqlConnectionName);
 		}
 
-		public async Task<List<User>> GetUsersBySearchValue(string searchValue)
+		public async Task<IEnumerable<UserModel>> GetUsersBySearchValue(string searchValue)
 		{
-			var result = await _dataAccess.LoadData<User, dynamic>("dbo.GetUsersBySearchValue",
+			var result = await _dataAccess.LoadData<UserModel, dynamic>("dbo.GetUsersBySearchValue",
 				new {SearchValue = searchValue},
 				_connectionStringData.SqlConnectionName);
 
-			return result.ToList();
+			return result;
 		}
 
-		public async Task<User> GetUserByUserId(int userId)
+		public async Task<IEnumerable<UserModel>> GetUserByUserId(int userId)
 		{
-			var result = await _dataAccess.LoadData<User, dynamic>("dbo.GetUserByUserId",
+			var result = await _dataAccess.LoadData<UserModel, dynamic>("dbo.GetUserByUserId",
 				new { UserId = userId },
 				_connectionStringData.SqlConnectionName);
 
-			return result.FirstOrDefault();
+			return result;
 		}
 
-		public async Task<List<User>> GetAllUsers()
+		public async Task<IEnumerable<UserModel>> GetAllUsers()
 		{
-			var result = await _dataAccess.LoadData<User, dynamic>("dbo.GetAllUsers",
+			var result = await _dataAccess.LoadData<UserModel, dynamic>("dbo.GetAllUsers",
 				new {  },
 				_connectionStringData.SqlConnectionName);
 
-			return result.ToList();
+			return result;
 		}
 	}
 }

@@ -9,11 +9,11 @@ namespace NebraskaCodeDataLibraryDemo.Data.Interfaces
 {
 	public interface IUserData
 	{
-		Task<int> CreateUser(User user);
-		Task<int> UpdateUser(User user);
+		Task<int> CreateUser(UserModel user);
+		Task<int> UpdateUser(UserModel user);
 		Task<int> DeleteUser(int userId);
-		Task<List<User>> GetUsersBySearchValue(string searchValue);
-		Task<User> GetUserByUserId(int userId);
-		Task<List<User>> GetAllUsers();
+		Task<IEnumerable<UserModel>> GetUsersBySearchValue(string searchValue);
+		Task<IEnumerable<UserModel>> GetUserByUserId(int userId);
+		Task<IEnumerable<UserModel>> GetAllUsers();
 	}
 }
