@@ -35,6 +35,7 @@ namespace NebraskaCodeDataLibraryDemo.Data
 			p.Add("PublicationDate", book.PublicationDate);
 			p.Add("ISBN", book.ISBN);
 			p.Add("ReviewRating", book.ReviewRating);
+			p.Add("Comments", book.Comments);
 			//p.Add("AuthorMiddleName", book.AuthorMiddleName);
 			//p.Add("CategoryId", book.CategoryId);
 			//p.Add("SubCategoryId", book.SubCategoryId);
@@ -63,6 +64,7 @@ namespace NebraskaCodeDataLibraryDemo.Data
 					PublicationDate = book.PublicationDate,
 					ISBN = book.ISBN,
 					ReviewRating = book.ReviewRating,
+					Comments = book.Comments
 					//AuthorMiddleName = book.AuthorMiddleName,
 					//CategoryId = book.CategoryId,
 					//SubCategoryId = book.SubCategoryId,

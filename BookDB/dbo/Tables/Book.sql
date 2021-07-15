@@ -9,6 +9,7 @@
 	[PublicationDate] DateTime NULL,
 	[ISBN] INT NULL,
 	[ReviewRating] INT NULL,
+	[Comments] VARCHAR(Max) NULL
 	--[AuthorMiddleName] VARCHAR(150) NULL,
 	--[CategoryId] Int Not NULL,
 	--[SubCategoryId] INT Not NULL,

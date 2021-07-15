@@ -7,7 +7,8 @@
 	@Publisher VARCHAR(255),
 	@PublicationDate DateTime,
 	@ISBN INT NULL,
-	@ReviewRating INT NULL
+	@ReviewRating INT NULL,
+	@Comments VARCHAR(Max) NULL
 	--@AuthorMiddleName VARCHAR(150),
 	--@CategoryId INT,
 	--@SubCategoryId INT,
@@ -31,7 +32,8 @@ Begin
 			Publisher = @Publisher,
 			PublicationDate = @PublicationDate,
 			ISBN = @ISBN,
-			ReviewRating = @ReviewRating
+			ReviewRating = @ReviewRating,
+			Comments = @Comments
 			--AuthorMiddleName = @AuthorMiddleName,
 			--CategoryId = @CategoryId,
 			--SubCategoryId = @SubCategoryId,

@@ -7,6 +7,7 @@
 	@PublicationDate DateTime,
 	@ISBN INT NULL,
 	@ReviewRating INT NULL,
+	@Comments VARCHAR(MAX),
 	--@AuthorMiddleName VARCHAR(150),
 	--@CategoryId INT,
 	--@SubCategoryId INT,
@@ -22,9 +23,9 @@ Begin
 	set nocount on;
 
 	Insert Into dbo.Book(Title, AuthorFirstName, AuthorLastName, PrintLength,
-		   Publisher, PublicationDate, ISBN, ReviewRating)
+		   Publisher, PublicationDate, ISBN, ReviewRating, Comments)
 	Values(@Title, @AuthorFirstName, @AuthorLastName, @PrintLength,
-		   @Publisher, @PublicationDate, @ISBN, @ReviewRating)
+		   @Publisher, @PublicationDate, @ISBN, @ReviewRating, @Comments)
 
 	set @BookId = SCOPE_IDENTITY();
 

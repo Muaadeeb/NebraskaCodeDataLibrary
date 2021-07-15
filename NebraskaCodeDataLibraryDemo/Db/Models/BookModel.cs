@@ -17,6 +17,7 @@ namespace NebraskaCodeDataLibraryDemo.Db.Models
 		public DateTime PublicationDate { get; set; }
 		public int ISBN { get; set; }
 		public int ReviewRating { get; set; }
+		public string Comments { get; set; }
 		//public string AuthorMiddleName { get; set; }
 		//public int CategoryId { get; set; } // Young Readers, children, adult, etc..
 		//public int SubCategoryId { get; set; } // Fiction, non-Fiction, fantasy, sci-fi, etc..
